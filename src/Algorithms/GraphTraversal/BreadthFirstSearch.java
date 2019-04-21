@@ -61,6 +61,7 @@ public class BreadthFirstSearch {
                         route[startPosition+j] = new int[] {adjacentNodeList[j][0], adjacentNodeList[j][1]};
                         if(maze.getNodeValue(route[startPosition+j][0], route[startPosition+j][1]).equals("E"))
                         {
+                            maze.getNode(route[startPosition+j][0], route[startPosition+j][1]).setState(State.visited);
                             return getRouteFromArray(route);
                         }
                     }
