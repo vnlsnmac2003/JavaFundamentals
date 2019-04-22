@@ -80,7 +80,7 @@ public class BreadthFirstSearchNormal {
         
         for(int i = array.size()-2; i>=0; i--)
         {
-            if(array.get(i).getX() == currentNode.getX())//check current and compared node have same x value //((array[i][0] == focusNode[0]) )|| (array[i][1] == focusNode[1])
+            if(array.get(i).getX() == currentNode.getX())//check current and compared node have same x value 
             { 
                 if(((currentNode.getY() - 1) == array.get(i).getY()) || ((currentNode.getY() + 1) == array.get(i).getY())) //if node is above or below it
                 {

@@ -87,7 +87,7 @@ public class BreadthFirstSearch {
         int[] currentNode = route[0];
         for(int i = array.length-2; i>=0; i--)
         {
-            if(array[i][0] == currentNode[0])//check current and compared node have same x value //((array[i][0] == focusNode[0]) )|| (array[i][1] == focusNode[1])
+            if(array[i][0] == currentNode[0])//check current and compared node have same x value 
             { 
                 if(((currentNode[1] - 1) == array[i][1]) || ((currentNode[1] + 1) == array[i][1])) //if node is above or below it
                 {
