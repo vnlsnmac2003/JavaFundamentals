@@ -30,7 +30,7 @@ public GraphMatrix(GraphNode[][] matrix, int startNodeX, int startNodeY, int end
     /**
      * Gets Nodes that are in important areas i.e. at corners and endings to aid in faster searching. 
      * Unimportant nodes will be nodes along a path.
-     * @return
+     * @return important nodes for efficient routing
      */
     public ArrayList<GraphNode> getImportantNodes()
 {
@@ -72,7 +72,7 @@ public void setNodeValue(int x, int y, String value)
 }
 /**
  * Sets all the adjacent node coordinates of every node not a wall i.e. nodes with value: 'E','0' & 'S'.
- * @param matrix 
+ * @param matrix - a specified node matrix
  */
 public void setAllAdjacentNodes(GraphNode[][] matrix)
     {
@@ -181,7 +181,7 @@ public void setAllAdjacentNodes(GraphNode[][] matrix)
     
     /**
      * Sets the value of the route nodes from 'S' to 'E' (excluding them) with the letter 'X'
-     * @param list 
+     * @param list - list of valid route node coordinates
      */
     public void setRoute(int[][] list)
     {
@@ -191,7 +191,20 @@ public void setAllAdjacentNodes(GraphNode[][] matrix)
                 continue;
             setNodeValue(list[i][0], list[i][1], "X");
         }
-        
+    }
+    
+    /**
+     * Sets the value of the route nodes from 'S' to 'E' (excluding them) with the letter 'X'
+     * @param list - list of valid route nodes
+     */
+     public void setRoute(ArrayList<GraphNode> list)
+    {
+        for(int i=0; i<list.size(); i++)
+        {
+            if( (i == 0) || (i == list.size()-1) ) //skip beginning and end nodes
+                continue;
+            setNodeValue(list.get(i).getX(), list.get(i).getY(), "X");
+        }
     }
 }
 

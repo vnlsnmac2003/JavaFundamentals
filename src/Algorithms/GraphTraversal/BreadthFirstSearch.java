@@ -72,7 +72,7 @@ public class BreadthFirstSearch {
     }
     
     /**
-     * Gets a direct the route from the end point to the start point selecting from a list of path nodes given in an array
+     * Gets a direct route from the end point to the start point selecting from a list of path nodes given in an array
      * Does this by starting from the last node and checking the list for nodes next to it in any direction. It does this
      * till it reaches the start node and returns the route found
      * @param array
