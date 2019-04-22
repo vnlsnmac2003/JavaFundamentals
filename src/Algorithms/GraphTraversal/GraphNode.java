@@ -5,6 +5,10 @@
  */
 package Algorithms.GraphTraversal;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 /**
  *
@@ -17,7 +21,7 @@ public class GraphNode {
     private int[][] adjacentNodesPositions;
     private String value;
     private State state;
-    enum State {visited, unvisited}
+    public enum State {visited, unvisited}
     
     public GraphNode(int x, int y, String value){
         this.x = x;
@@ -66,5 +70,31 @@ public class GraphNode {
         this.state = state;
     }
     
-    
+    @Override
+    public boolean equals(Object obj){
+        if(obj instanceof GraphNode){
+            GraphNode nodeObj = (GraphNode) obj;
+            if(!(nodeObj.x == this.x &&
+               nodeObj.y == this.y &&
+               nodeObj.state == this.state &&
+               nodeObj.value.equals(this.value)))
+                return false;
+            
+            List<int[]> objAdjList = Arrays.asList(nodeObj.adjacentNodesPositions);
+            List<int[]> thisAdjList = Arrays.asList(this.adjacentNodesPositions);
+            if(objAdjList.size() != thisAdjList.size())
+                return false;
+            
+            boolean contains = false;
+            for(int[] thisAdjNode : thisAdjList){
+                contains = false;
+                for(int[] objAdjNode : objAdjList){
+                    if((thisAdjNode[0] == objAdjNode[0]) && (thisAdjNode[0] == objAdjNode[0]))
+                        contains = true;
+                }
+            }
+            return contains;
+        }
+        return false;
+    }
 }
