@@ -16,8 +16,8 @@ public class BinarySearchTree {
     /**
      * Rules:
      * - No duplicates are allowed 
-     *
      */
+    
     NumericNode root;
     
     public BinarySearchTree(){}
