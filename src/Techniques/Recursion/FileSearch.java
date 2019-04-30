@@ -20,20 +20,25 @@ import javax.swing.JFileChooser;
  */
 public class FileSearch {
     
-    public static File getFileOrDirectory(){
-        File file = null;
+    public static String getFileOrDirectoryPath(){
+        String path = "";
         JFileChooser fileSelector = new JFileChooser();
         fileSelector.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         if(JFileChooser.APPROVE_OPTION == fileSelector.showOpenDialog(null))
         {
-            file = fileSelector.getSelectedFile();
+            path = fileSelector.getSelectedFile().getAbsolutePath();
         }
-        return file;
+        else
+        {
+            throw new IllegalArgumentException("File not selected");
+        }
+        return path;
     }
     
     
     public static ArrayList<String> printFileContentNames(String fileLocation){
         ArrayList<String> filePaths = new ArrayList<>();
+        
         File file = new File(fileLocation);
         if(Files.isRegularFile(file.toPath())){
             //base case
@@ -56,7 +61,7 @@ public class FileSearch {
     }
     
     public static void main(String[] args){
-        printFileContentNames(getFileOrDirectory().getAbsolutePath()).forEach((path) -> {
+        printFileContentNames(getFileOrDirectoryPath()).forEach((path) -> {
             System.out.println(path);
         });
     }
