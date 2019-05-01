@@ -38,12 +38,27 @@ public class GraphNode {
         this.adjacentNodesPositions = adjacentNodes;
     }
     
+    
     /**
      * Gets all adjacent nodes
      * @return list of adjacent node coordinates
      */
     public int[][] getAdjacentNodesPositions(){
         return adjacentNodesPositions;
+    }
+    
+    public boolean allAdjacentNodesVisted(GraphMatrix maze){
+        boolean verdict = true;
+        for(int[] nodePos : adjacentNodesPositions)
+        {
+            GraphNode node = maze.getNode(nodePos[0], nodePos[1]);
+            if(node.getState() == State.unvisited)
+            {
+                verdict = false;
+                break;
+            }
+        }
+        return verdict;
     }
     
     public String getValue(){
