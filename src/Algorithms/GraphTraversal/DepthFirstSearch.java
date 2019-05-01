@@ -48,9 +48,15 @@ public class DepthFirstSearch {
         {
             if(validRoute.getLast().getValue().equals("S"))
                 throw new IllegalArgumentException("Maze has no valid route within it");
-            validRoute.removeLast();
         }
         
         return validRoute;
+    }
+    
+    public static void main(String[] args) {
+        GraphMatrix maze = MazeReader.getGraphMatrixFromFile();
+        LinkedList route = getValidRoute(maze);
+        maze.setRoute(route);
+        maze.printMatrix();
     }
 }
