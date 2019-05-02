@@ -25,12 +25,7 @@ public class DepthFirstSearch {
     
     public static LinkedList<GraphNode> traverse(LinkedList<GraphNode> validRoute, GraphMatrix maze)
     {
-        if(validRoute.getLast().getValue().equals("S"))
-        {
-            if(validRoute.getLast().allAdjacentNodesVisted(maze))
-                throw new IllegalArgumentException("Maze has no valid route within it");
-        }
-        
+        int adjacentVisitedNodesNo = 0;
         for(int[] adjNodesXY : validRoute.getLast().getAdjacentNodesPositions())
         {
             if(validRoute.getLast().getValue().equals("E"))
@@ -40,17 +35,21 @@ public class DepthFirstSearch {
             if(nextNode.getState() == State.unvisited)
             {
                 nextNode.setState(State.visited);
+                adjacentVisitedNodesNo++;
                 validRoute.add(nextNode);
                 
                 if(nextNode.getValue().equals("E"))
                     return validRoute;
                 
-                while(validRoute.getLast().allAdjacentNodesVisted(maze))
-                    validRoute.removeLast();
-                
                 validRoute = traverse(validRoute,maze);
             }
         }
+        if(adjacentVisitedNodesNo == 0)
+        {
+            if(validRoute.getLast().getValue().equals("S"))
+                throw new IllegalArgumentException("Maze has no valid route within it");
+        }
+        
         return validRoute;
     }
     

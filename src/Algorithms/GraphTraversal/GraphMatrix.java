@@ -6,7 +6,6 @@
 package Algorithms.GraphTraversal;
 
 import java.util.ArrayList;
-import java.util.List;
 /**
  *
  * @author Personal
@@ -198,7 +197,7 @@ public void setAllAdjacentNodes(GraphNode[][] matrix)
      * Sets the value of the route nodes from 'S' to 'E' (excluding them) with the letter 'X'
      * @param list - list of valid route nodes
      */
-     public void setRoute(List<GraphNode> list)
+     public void setRoute(ArrayList<GraphNode> list)
     {
         for(int i=0; i<list.size(); i++)
         {
